@@ -22,9 +22,6 @@
             overflow-x: hidden;
         }
 
-        /* ============================================================
-           АКРИЛОВЫЙ ФОН
-           ============================================================ */
         .background {
             position: fixed;
             top: 0;
@@ -39,7 +36,6 @@
             pointer-events: none;
         }
 
-        /* Плавающие частицы */
         .particles {
             position: fixed;
             top: 0;
@@ -59,25 +55,12 @@
         }
 
         @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
-        /* ============================================================
-           ОСНОВНОЙ КОНТЕЙНЕР
-           ============================================================ */
         .app {
             position: relative;
             z-index: 1;
@@ -87,9 +70,6 @@
             min-height: 100vh;
         }
 
-        /* ============================================================
-           ШАПКА (Header)
-           ============================================================ */
         .header {
             display: flex;
             justify-content: space-between;
@@ -109,6 +89,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
 
         .logo-icon {
@@ -141,9 +122,6 @@
             gap: 16px;
         }
 
-        /* ============================================================
-           GOOGLE AUTH
-           ============================================================ */
         .auth-section {
             display: flex;
             align-items: center;
@@ -216,9 +194,6 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* ============================================================
-           HERO СЕКЦИЯ
-           ============================================================ */
         .hero {
             text-align: center;
             padding: 40px 0 60px;
@@ -278,9 +253,6 @@
             font-weight: 500;
         }
 
-        /* ============================================================
-           PRODUCTS
-           ============================================================ */
         .products {
             margin-top: 20px;
             animation: fadeUp 0.9s ease 0.4s both;
@@ -458,9 +430,9 @@
             stroke-linejoin: round;
         }
 
-
-
-        /* КНОПКА ФОРУМА */
+        /* ============================================================
+           КНОПКА ФОРУМА (с редиректом)
+           ============================================================ */
         .forum-entry {
             margin: 38px 0 8px;
             text-align: center;
@@ -472,7 +444,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            min-width: 210px;
+            min-width: 240px;
             padding: 14px 32px;
             border: 1px solid rgba(138, 86, 255, 0.28);
             border-radius: 60px;
@@ -486,6 +458,16 @@
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-forum .forum-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-forum:hover .forum-arrow {
+            transform: translate(3px, -3px);
         }
 
         .btn-forum:hover {
@@ -551,9 +533,6 @@
             fill: currentColor;
         }
 
-        /* ============================================================
-           ФУТЕР
-           ============================================================ */
         .footer {
             margin-top: 50px;
             padding-top: 24px;
@@ -574,74 +553,38 @@
             color: #8A56FF;
         }
 
-        /* ============================================================
-           АДАПТИВ
-           ============================================================ */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.6rem;
-            }
-            .header {
-                flex-direction: column;
-                gap: 16px;
-                align-items: flex-start;
-            }
-            .header-right {
-                width: 100%;
-                justify-content: flex-start;
-            }
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .footer {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
-            }
+            .hero-title { font-size: 2.6rem; }
+            .header { flex-direction: column; gap: 16px; align-items: flex-start; }
+            .header-right { width: 100%; justify-content: flex-start; }
+            .product-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.5rem; }
+            .footer { flex-direction: column; gap: 8px; text-align: center; }
+            .btn-forum { min-width: 200px; padding: 12px 24px; font-size: 0.88rem; }
         }
 
         @media (max-width: 480px) {
-            .app {
-                padding: 12px 16px 40px;
-            }
-            .hero-title {
-                font-size: 2rem;
-            }
-            .hero-subtitle {
-                font-size: 0.95rem;
-            }
-            .btn-google {
-                font-size: 0.78rem;
-                padding: 8px 14px;
-            }
-            .product-card {
-                padding: 20px 18px;
-            }
+            .app { padding: 12px 16px 40px; }
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 0.95rem; }
+            .btn-google { font-size: 0.78rem; padding: 8px 14px; }
+            .product-card { padding: 20px 18px; }
+            .btn-forum { min-width: 180px; padding: 11px 20px; font-size: 0.82rem; gap: 8px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- АКРИЛОВЫЙ ФОН -->
     <div class="background"></div>
-
-    <!-- ПЛАВАЮЩИЕ ЧАСТИЦЫ -->
     <div class="particles" id="particles"></div>
 
-    <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
     <div class="app">
 
-        <!-- ============================================================
-             ШАПКА
-             ============================================================ -->
         <header class="header">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">N</div>
                 <div class="logo-text">Nursultan</div>
-            </div>
+            </a>
 
             <div class="header-right">
                 <div class="auth-section">
@@ -663,9 +606,6 @@
             </div>
         </header>
 
-        <!-- ============================================================
-             HERO
-             ============================================================ -->
         <section class="hero">
             <div class="hero-badge">✦ Premium Software</div>
             <h1 class="hero-title">Премиальное<br>программное обеспечение</h1>
@@ -675,9 +615,6 @@
             </p>
         </section>
 
-        <!-- ============================================================
-             PRODUCTS
-             ============================================================ -->
         <section class="products">
             <div class="section-title">
                 Продукты
@@ -685,7 +622,6 @@
             </div>
 
             <div class="product-grid">
-                <!-- Minecraft Nursultan -->
                 <div class="product-card">
                     <div class="product-header">
                         <div class="product-icon">N</div>
@@ -713,24 +649,19 @@
             </div>
         </section>
 
-
-
-        <!-- КНОПКА ПЕРЕХОДА НА ФОРУМ -->
+        <!-- КНОПКА ФОРУМА (с редиректом на новый URL) -->
         <section class="forum-entry">
-            <a class="btn-forum" href="forum.html">
+            <a class="btn-forum" id="forumBtn" href="https://aiaaiaoiaoa-cmd.github.io/mkekemsma2i49/" target="_blank" rel="noopener noreferrer">
                 <span aria-hidden="true">▤</span>
                 Форум Nursultan
-                <span aria-hidden="true">↗</span>
+                <span class="forum-arrow" aria-hidden="true">↗</span>
             </a>
         </section>
 
-        <!-- ============================================================
-             ПОДДЕРЖКА
-             ============================================================ -->
         <section class="support">
             <div class="support-title">Нужна помощь?</div>
             <div class="support-desc">Напиши нам в Telegram — ответим в течение 5 минут</div>
-            <a href="https://t.me/thxinc" target="_blank" class="btn-telegram">
+            <a href="https://t.me/thxinc" target="_blank" class="btn-telegram" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24">
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                 </svg>
@@ -738,9 +669,6 @@
             </a>
         </section>
 
-        <!-- ============================================================
-             ФУТЕР
-             ============================================================ -->
         <footer class="footer">
             <span>© 2026 Nursultan. Все права защищены.</span>
             <span>Сделано с ❤️ для коммьюнити</span>
@@ -750,34 +678,25 @@
 
     <script>
         // ============================================================
-        // 1. ГЕНЕРАЦИЯ ПЛАВАЮЩИХ ЧАСТИЦ
+        // 1. ЧАСТИЦЫ
         // ============================================================
         (function generateParticles() {
             const container = document.getElementById('particles');
-            const count = 25;
-            
-            for (let i = 0; i < count; i++) {
+            for (let i = 0; i < 25; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                
-                const size = Math.random() * 6 + 2;
-                const left = Math.random() * 100;
-                const duration = Math.random() * 20 + 15;
-                const delay = Math.random() * 20;
-                
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = left + '%';
-                particle.style.animationDuration = duration + 's';
-                particle.style.animationDelay = delay + 's';
+                particle.style.width = (Math.random() * 6 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = (Math.random() * 100) + '%';
+                particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
+                particle.style.animationDelay = (Math.random() * 20) + 's';
                 particle.style.opacity = Math.random() * 0.3 + 0.1;
-                
                 container.appendChild(particle);
             }
         })();
 
         // ============================================================
-        // 2. GOOGLE AUTH (тот же токен)
+        // 2. GOOGLE AUTH
         // ============================================================
         (function googleAuth() {
             const CLIENT_ID = '849190665927-1ch46i0nv2ri7hj37qncp1fjd13vdeld.apps.googleusercontent.com';
@@ -788,46 +707,33 @@
             const userName = document.getElementById('userName');
             const userAvatar = document.getElementById('userAvatar');
 
-            function signInWithGoogle() {
-                const authUrl = 'https://accounts.google.com/o/oauth2/v2/auth?' +
+            googleBtn.addEventListener('click', function() {
+                window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' +
                     'client_id=' + CLIENT_ID +
                     '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
-                    '&response_type=token' +
-                    '&scope=email profile';
-                window.location.href = authUrl;
-            }
+                    '&response_type=token&scope=email profile';
+            });
 
-            function handleCallback() {
-                const hash = window.location.hash;
-                if (hash) {
-                    const params = new URLSearchParams(hash.substring(1));
-                    const accessToken = params.get('access_token');
-                    
-                    if (accessToken) {
-                        fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-                            headers: { 'Authorization': 'Bearer ' + accessToken }
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            googleBtn.style.display = 'none';
-                            userInfo.classList.add('active');
-                            
-                            const name = data.name || 'User';
-                            userName.textContent = name;
-                            userAvatar.textContent = name.charAt(0).toUpperCase();
-                            
-                            // Очищаем hash
-                            history.replaceState(null, null, ' ');
-                        })
-                        .catch(err => {
-                            console.error('Google auth error:', err);
-                        });
-                    }
+            const hash = window.location.hash;
+            if (hash) {
+                const params = new URLSearchParams(hash.substring(1));
+                const accessToken = params.get('access_token');
+                if (accessToken) {
+                    fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+                        headers: { 'Authorization': 'Bearer ' + accessToken }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        googleBtn.style.display = 'none';
+                        userInfo.classList.add('active');
+                        const name = data.name || 'User';
+                        userName.textContent = name;
+                        userAvatar.textContent = name.charAt(0).toUpperCase();
+                        history.replaceState(null, null, ' ');
+                    })
+                    .catch(err => console.error('Google auth error:', err));
                 }
             }
-
-            googleBtn.addEventListener('click', signInWithGoogle);
-            handleCallback();
         })();
 
         // ============================================================
@@ -839,13 +745,8 @@
 
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                // Анимация нажатия
                 btn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    btn.style.transform = '';
-                }, 150);
-                
+                setTimeout(() => btn.style.transform = '', 150);
                 try {
                     const a = document.createElement('a');
                     a.href = LOADER_URL;
@@ -855,13 +756,32 @@
                     document.body.removeChild(a);
                 } catch (err) {
                     alert('⚠️ Ссылка на лоадер временно недоступна');
-                    console.error('Download error:', err);
                 }
             });
         })();
 
         // ============================================================
-        // 4. ПЛАВНОЕ ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ
+        // 4. КНОПКА ФОРУМА (дополнительный редирект через JS)
+        // ============================================================
+        (function forumRedirect() {
+            const forumBtn = document.getElementById('forumBtn');
+            const FORUM_URL = 'https://aiaaiaoiaoa-cmd.github.io/mkekemsma2i49/';
+
+            // Убеждаемся, что href правильный (на случай, если HTML не обновился)
+            forumBtn.href = FORUM_URL;
+
+            // Дублируем редирект через JS (страховка)
+            forumBtn.addEventListener('click', function(e) {
+                // Если target="_blank" не сработает — редиректим в этом окне
+                if (!forumBtn.target || forumBtn.target !== '_blank') {
+                    e.preventDefault();
+                    window.location.href = FORUM_URL;
+                }
+            });
+        })();
+
+        // ============================================================
+        // 5. ПЛАВНОЕ ПОЯВЛЕНИЕ
         // ============================================================
         (function smoothReveal() {
             const observer = new IntersectionObserver((entries) => {
@@ -881,8 +801,8 @@
             });
         })();
 
-        console.log('🚀 Nursultan Premium Website loaded!');
-        console.log('🔗 Support: https://t.me/thxinc');
+        console.log('🚀 Nursultan Premium loaded!');
+        console.log('📌 Forum: https://aiaaiaoiaoa-cmd.github.io/mkekemsma2i49/');
     </script>
 
 </body>
