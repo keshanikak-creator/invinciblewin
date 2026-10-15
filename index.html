@@ -458,6 +458,47 @@
             stroke-linejoin: round;
         }
 
+
+
+        /* КНОПКА ФОРУМА */
+        .forum-entry {
+            margin: 38px 0 8px;
+            text-align: center;
+            animation: fadeUp 0.9s ease 0.5s both;
+        }
+
+        .btn-forum {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 210px;
+            padding: 14px 32px;
+            border: 1px solid rgba(138, 86, 255, 0.28);
+            border-radius: 60px;
+            background: rgba(138, 86, 255, 0.08);
+            color: #e8e8f0;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 8px 35px rgba(86, 50, 255, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-forum:hover {
+            transform: translateY(-2px);
+            border-color: rgba(138, 86, 255, 0.55);
+            background: rgba(138, 86, 255, 0.14);
+            box-shadow: 0 12px 40px rgba(86, 50, 255, 0.16);
+        }
+
+        .btn-forum:active {
+            transform: translateY(0) scale(0.98);
+        }
+
         /* ============================================================
            ПОДДЕРЖКА
            ============================================================ */
@@ -670,6 +711,17 @@
                     </button>
                 </div>
             </div>
+        </section>
+
+
+
+        <!-- КНОПКА ПЕРЕХОДА НА ФОРУМ -->
+        <section class="forum-entry">
+            <a class="btn-forum" href="forum.html">
+                <span aria-hidden="true">▤</span>
+                Форум Nursultan
+                <span aria-hidden="true">↗</span>
+            </a>
         </section>
 
         <!-- ============================================================
